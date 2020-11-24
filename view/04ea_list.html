@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav>
+        <img src="../img/log.png" alt="">
+        <div class="text">
+            <h1>销售顾问列表</h1>
+        </div>
+    </nav>
+    <div>
+        <form>
+            <article class="form-group">
+                <article>
+                    <input type="email" class="form-csontrol" id="email" placeholder="输入手机号">
+                    <input type="button" class="btn btn-info find" value="查找">
+                </article>
+
+                <article>
+                    <input type="button" class="btn btn-info" value="+销售员工添加">
+                    <input type="button" class="btn btn-info" value="+查看">
+                </article>
+            </article>
+        </form>
+    </div>
+
+    <!-- table -->
+    <div class="table" id="tab">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="table-info">
+                    <th>录入时间</th>
+                    <th>销售员</th>
+                    <th>手机号</th>
+                    <th>销售顾问微信</th>
+                    <th>销售顾问二维码</th>
+                    <th>登录密码</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2020-11-14 13:52:58</td>
+                    <td>xxx</td>
+                    <td>11位手机号</td>
+                    <td>wx-123123</td>
+                    <td>
+                        <img src="../img/QR_code.png" alt="">
+                    </td>
+                    <td>90902</td>
+                </tr>
+                <tr>
+                    <td>2020-11-14 13:52:58</td>
+                    <td>xxx</td>
+                    <td>11位手机号</td>
+                    <td>wx-123123</td>
+                    <td>
+                        <img src="../img/QR_code.png" alt="">
+                    </td>
+                    <td>90902</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class=""> . . . . . </li>
+        <li class="page-item"><a class="page-link" href="#">10</a></li>
+        <li class="page-item"><a class="page-link" href="#">100</a></li>
+        <li class="page-item"><a class="page-link" href="#">跳到</a></li>
+        <li class="page-item">
+            <input type="text" class="form-csontrol seek">
+        </li>
+    </ul>
+</body>
+
+</html>

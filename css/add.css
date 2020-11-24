@@ -1,0 +1,48 @@
+nav {
+    padding-top: 3rem;
+}
+
+nav>div {
+    display: flex;
+    justify-content: center;
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    padding-top: 3rem;
+}
+
+.inputs>form {
+    width: 30%;
+}
+
+.sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub>button {
+    width: 100%;
+}
+
+.add_text {
+    display: flex;
+    justify-content: center;
+}
+
+.add_text span {
+    margin-left: 30px;
+}
+
+@media screen and (max-width:1000px) {
+    .text h1 {
+        font-size: 2rem;
+    }
+    .inputs>form {
+        width: 60%;
+    }
+}

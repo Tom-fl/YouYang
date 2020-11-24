@@ -1,0 +1,84 @@
+nav {
+    padding-top: 3rem;
+}
+
+nav>div {
+    display: flex;
+    justify-content: center;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+#tab {
+    width: 70%;
+}
+
+.find {
+    height: 37px;
+}
+
+.table {
+    margin: 0 auto;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.seek {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.card {
+    height: 3rem;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+@media screen and (max-width:550px) {
+    #tab {
+        width: 100%;
+    }
+    .form_box {
+        padding-top: 1rem;
+    }
+    nav {
+        padding-left: 5rem;
+    }
+    .text h1 {
+        font-size: 30px;
+    }
+    .form-group {
+        flex-wrap: wrap;
+        /* padding-left: 4rem; */
+    }
+    .form-group article {
+        display: flex;
+        /* justify-content: center;
+        flex: 0 0 100%; */
+    }
+    .form-group article input:first-child {
+        flex: 0 0 62%;
+    }
+    .pagination {
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .pagination li {
+        flex: 0 0 20%;
+        padding: 1rem 0px 0rem 1rem;
+    }
+    .card {
+        width: 100%;
+    }
+    .table-bordered>thead {
+        font-size: 8px;
+    }
+}

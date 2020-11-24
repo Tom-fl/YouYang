@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="../public/font/arrows/iconfont.css">
+    <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css">
+    <style>
+        .form-group {
+            justify-content: center;
+        }
+        
+        .form-group article {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <img src="../img/log.png" alt="">
+        <div class="text">
+            <h1>销售顾问列表</h1>
+        </div>
+    </nav>
+    <div>
+        <form>
+            <article class="form-group">
+                <article>
+                    <input type="email" class="form-csontrol" id="email" placeholder="输入手机号">
+                    <input type="button" class="btn btn-info find" value="查找">
+                    <button type="button" class="btn btn-info">
+                        <span>是否添加</span>
+                        <span class="iconfont icon-shangxiajiantou"></span>
+                    </button>
+                </article>
+            </article>
+            <div class="card bg-info text-white mx-auto">
+                <div class="card-body">共有数据:100条</div>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- table -->
+    <div class="table" id="tab">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="table-info">
+                    <th>录入时间</th>
+                    <th>微信</th>
+                    <th>推广人员</th>
+                    <th>是否已添加</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2020-11-14 13:52:58</td>
+                    <td>wx-123123</td>
+                    <td>刘留流</td>
+                    <td>未添加</td>
+                    <td>
+                        <button type="button" class="btn btn-success">添加到我的客户</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2020-11-14 13:52:58</td>
+                    <td>xxx</td>
+                    <td>11位手机号</td>
+                    <td>wx-123123</td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2020-11-14 13:52:58</td>
+                    <td>wx-123123</td>
+                    <td>刘留流</td>
+                    <td>未添加</td>
+                    <td>
+                        <button type="button" class="btn btn-success">添加到我的客户</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class=""> . . . . . </li>
+        <li class="page-item"><a class="page-link" href="#">10</a></li>
+        <li class="page-item"><a class="page-link" href="#">100</a></li>
+        <li class="page-item"><a class="page-link" href="#">跳到</a></li>
+        <li class="page-item">
+            <input type="text" class="form-csontrol seek">
+        </li>
+    </ul>
+</body>
+
+</html>
