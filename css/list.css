@@ -1,3 +1,9 @@
+body,
+html {
+    margin: 0 auto;
+    width: 90%;
+}
+
 nav {
     padding-top: 3rem;
 }
@@ -42,43 +48,113 @@ nav>div {
     align-items: flex-end;
 }
 
-@media screen and (max-width:550px) {
+.dropdown {
+    display: inline-block;
+}
+
+.channel {
+    display: flex;
+    justify-content: flex-end;
+    width: 85%;
+}
+
+.alert {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-top: 2rem;
+}
+
+.dropdown-menu {
+    padding: 0 0;
+}
+
+
+/*  */
+
+@media screen and (max-width:540px) {
     #tab {
         width: 100%;
+        overflow: scroll;
+        white-space: nowrap;
+    }
+    .table {
+        margin: 0 1rem;
+    }
+    nav img {
+        border-radius: 5px;
+    }
+    .pagination {
+        padding-top: 1rem;
+        flex-wrap: wrap;
     }
     .form_box {
-        padding-top: 1rem;
-    }
-    nav {
-        padding-left: 5rem;
-    }
-    .text h1 {
-        font-size: 30px;
-    }
-    .form-group {
-        flex-wrap: wrap;
-        /* padding-left: 4rem; */
+        padding-top: 2rem;
     }
     .form-group article {
         display: flex;
-        /* justify-content: center;
-        flex: 0 0 100%; */
+        flex-direction: column;
     }
-    .form-group article input:first-child {
-        flex: 0 0 62%;
-    }
-    .pagination {
-        align-items: center;
-        flex-wrap: wrap;
+    .channel {
+        padding-left: 20rem;
     }
     .pagination li {
         flex: 0 0 20%;
-        padding: 1rem 0px 0rem 1rem;
-    }
-    .card {
-        width: 100%;
-    }
-    .table-bordered>thead {
-        font-size: 8px;
     }
 }
+
+@media screen and (min-width:540px) and (max-width:720px) {
+    #tab {
+        width: 100%;
+        overflow: scroll;
+        white-space: nowrap;
+    }
+    .table {
+        margin: 0 1rem;
+    }
+    nav img {
+        border-radius: 5px;
+    }
+    .pagination {
+        padding-top: 1rem;
+    }
+    .form_box {
+        padding-top: 2rem;
+    }
+}
+
+@media screen and (min-width:720px) and (max-width:960px) {
+    #tab {
+        width: 100%;
+        overflow: scroll;
+        white-space: nowrap;
+    }
+    .table {
+        margin: 0 1rem;
+    }
+    nav img {
+        border-radius: 5px;
+    }
+    .pagination {
+        padding-top: 1rem;
+    }
+    .form_box {
+        padding-top: 2rem;
+    }
+}
+
+@media screen and (min-width:960px) and (max-width:1450px) {
+    #tab {
+        width: 100%;
+        overflow: scroll;
+    }
+    nav img {
+        border-radius: 5px;
+    }
+    .pagination {
+        padding-top: 1rem;
+    }
+}
+
+
+/*  */

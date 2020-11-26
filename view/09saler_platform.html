@@ -5,37 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/list.css">
     <link rel="stylesheet" href="../public/font/arrows/iconfont.css">
     <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css">
-    <style>
-        .form-group {
-            justify-content: center;
-        }
-        
-        .form-group article {
-            margin-left: 50px;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/list.css">
+    <script src="../public/jQuery/jQuery.js"></script>
+    <script src="../node_modules/popper.js/dist/umd/popper.js"></script>
+    <script src="../public/bootstrap/js/bootstrap.js"></script>
+    <script src="../public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../public/bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="icon" href="../img/logo_icont.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../img/logo_icont.png" type="image/x-icon" />
 </head>
 
 <body>
     <nav>
         <img src="../img/log.png" alt="">
         <div class="text">
-            <h1>销售顾问列表</h1>
+            <h1>销售员平台</h1>
         </div>
     </nav>
-    <div>
+    <div class="form_box">
         <form>
             <article class="form-group">
                 <article>
                     <input type="email" class="form-csontrol" id="email" placeholder="输入手机号">
                     <input type="button" class="btn btn-info find" value="查找">
-                    <button type="button" class="btn btn-info">
-                        <span>是否添加</span>
-                        <span class="iconfont icon-shangxiajiantou"></span>
-                    </button>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">是否添加</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">是</a>
+                            <a class="dropdown-item" href="#">否</a>
+                        </div>
+                    </div>
                 </article>
             </article>
             <div class="card bg-info text-white mx-auto">
@@ -64,7 +65,7 @@
                     <td>刘留流</td>
                     <td>未添加</td>
                     <td>
-                        <button type="button" class="btn btn-success">添加到我的客户</button>
+                        <button type="button" class="btn btn-info">添加到我的客户</button>
                     </td>
                 </tr>
                 <tr>
@@ -81,7 +82,7 @@
                     <td>刘留流</td>
                     <td>未添加</td>
                     <td>
-                        <button type="button" class="btn btn-success">添加到我的客户</button>
+                        <button type="button" class="btn btn-info">添加到我的客户</button>
                     </td>
                 </tr>
             </tbody>
@@ -99,6 +100,7 @@
             <input type="text" class="form-csontrol seek">
         </li>
     </ul>
+    <script src="../JS/09saler_platform.js"></script>
 </body>
 
 </html>

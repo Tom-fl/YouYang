@@ -7,6 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/list.css">
+    <link rel="icon" href="../img/logo_icont.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../img/logo_icont.png" type="image/x-icon" />
+    <script src="../public/jQuery/jQuery.js"></script>
 </head>
 
 <body>
@@ -25,8 +28,12 @@
                 </article>
 
                 <article>
-                    <input type="button" class="btn btn-info" value="+销售员工添加">
-                    <input type="button" class="btn btn-info" value="+查看">
+                    <a href="06add_saler.html">
+                        <input type="button" class="btn btn-info" value="+销售员工添加">
+                    </a>
+                    <a href="09saler_platform.html">
+                        <input type="button" class="btn btn-info" value="+查看">
+                    </a>
                 </article>
             </article>
         </form>
@@ -35,7 +42,7 @@
     <!-- table -->
     <div class="table" id="tab">
         <table class="table table-bordered table-hover">
-            <thead>
+            <thead style="white-space: nowrap;">
                 <tr class="table-info">
                     <th>录入时间</th>
                     <th>销售员</th>
@@ -45,7 +52,7 @@
                     <th>登录密码</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="white-space: nowrap;">
                 <tr>
                     <td>2020-11-14 13:52:58</td>
                     <td>xxx</td>
@@ -54,7 +61,13 @@
                     <td>
                         <img src="../img/QR_code.png" alt="">
                     </td>
-                    <td>90902</td>
+                    <td>
+                        <span>90902</span>
+                        <a href="12update_pwd.html">
+                            <button type="button" class="btn btn-info">修改</button>
+                        </a>
+                        <button type="button" class="btn btn-info">删除</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>2020-11-14 13:52:58</td>
@@ -64,7 +77,13 @@
                     <td>
                         <img src="../img/QR_code.png" alt="">
                     </td>
-                    <td>90902</td>
+                    <td>
+                        <span>90902</span>
+                        <a href="12update_pwd.html">
+                            <button type="button" class="btn btn-info">修改</button>
+                        </a>
+                        <button type="button" class="btn btn-info">删除</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -81,6 +100,7 @@
             <input type="text" class="form-csontrol seek">
         </li>
     </ul>
+    <script src="../JS/03saler_list.js"></script>
 </body>
 
 </html>
