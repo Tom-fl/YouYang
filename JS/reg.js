@@ -29,16 +29,16 @@ function fn_password(element) {
 };
 
 
-// 1.可以是中文 2.可以是英文，允许输入点（英文名字中的那种点）， 允许输入空格 3.中文和英文不能同时出现 4.长度在20个字符以内
+// 1.可以是中文 2.可以是英文，允许输入点  4.长度在 4-10 个字符以内
 function fn_name(element) {
     element.change(function() {
-        let name_reg = /^([\\u4e00-\\u9fa5]{5,10}|[a-zA-Z\\.\\s]{5,10})$/;
+        let name_reg = /[\u4e00-\u9fa5_a-zA-Z0-9_]{2,10}/;
         if (name_reg.test($(this).val())) {
             $(this).attr('placeholder', '姓名')
                 .css('border', '1px solid teal')
         } else {
             $(this).val('')
-                .attr('placeholder', '姓名格式有误(至少5-10个字符)')
+                .attr('placeholder', '姓名格式有误(至少2-10个字符)')
                 .css('border', '1px solid red');
         }
     })

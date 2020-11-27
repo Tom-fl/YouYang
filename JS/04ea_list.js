@@ -1,6 +1,6 @@
 // 初始化分页的销售员
 window.onload = function() {
-    saler_page(2, 1);
+    ea_page(2, 1);
 };
 
 let tbody = $('.table-bordered>tbody');
@@ -10,53 +10,47 @@ let page = 0;
 // 点击1234按钮切换分页
 $('.page-link').click(function() {
     page = $(this).text();
-
     // 如果模糊查询里
     // 填值了就掉模糊查询的方法
     // 没值就直接分页展示(分页的方法 saler_page)
     if ($(phone_dim).val() == '') {
-        saler_page(2, page);
+        ea_page(2, page);
     } else {
-        dim_page(2, page)
+        ea_dim_page(2, page)
     }
 });
-// 还差判断点击的时候 重复值
-
 
 // 处理分页的函数
-function saler_page(number, index) {
-    $.post('http://47.111.73.231:8080/saler_page/', { page_size: `${number}`, current_page: `${index}` }, function(data) {
-        // console.log(data.list);
+function ea_page(number, index) {
+    $.post('http://47.111.73.231:8080/ea_page/', { page_size: `${number}`, current_page: `${index}` }, function(data) {
         let list_gather = '';
         $(data.list).each(function(index, item) {
             list_gather += `<tr>
             <td class='amend'>${item.add_date}</td>
             <td class='amend'>${item.p_name}</td>
             <td class='amend'>${item.p_phone}</td>
-            <td class='amend'>${item.weixin}</td>
+            <td class='amend'>${item.p_weixin}</td>
+            <td><span class='span amend'>${item.p_pwd}</span></td>
             <td>
-                 <img src='${item.weixin_img_url}' alt='' class='ajax_03saler_img amend'>
-            </td>
-            <td>
-                <span class='span amend'>${item.p_pwd}</span>
                 <a href="08update_saler.html">
-                    <button type="button" class="btn btn-info" value='${item.p_id}' id='update'>修改</button>
+                    <button type="button" class="btn btn-info amend" value='${item.p_id}' id='update'>修改</button>
                 </a>
                 <button type="button" class="btn btn-info amend" value='${item.p_id}' id='del'>删除</button>
             </td>
         </tr>`
         });
         $(tbody).html(list_gather)
-    });
+    })
 };
+
 
 
 // 根据手机号，查找销售员 (模糊查询)
 $('#find').click(function() {
-    dim_page(2, 1)
+    ea_dim_page(2, 1)
 });
-
-function dim_page(number, index) {
+// 处理模糊查询的分页
+function ea_dim_page(number, index) {
     let phone_val = $('#phone').val();
     if (phone_val == '') {
         console.log('请输入手机号');
@@ -75,7 +69,7 @@ function dim_page(number, index) {
             <td>
                 <span class='span amend'>${item.p_pwd}</span>
                 <a href="08update_saler.html">
-                    <button type="button" class="btn btn-info" value='${item.p_id}' id='update'>修改</button>
+                    <button type="button" class="btn btn-info amend" value='${item.p_id}' id='update'>修改</button>
                 </a>
                 <button type="button" class="btn btn-info amend" value='${item.p_id}' id='del'>删除</button>
             </td>
@@ -85,8 +79,6 @@ function dim_page(number, index) {
         });
     };
 };
-
-
 
 
 
@@ -100,18 +92,18 @@ $(tbody).delegate('#update', 'click', function(e) {
     let amend_file = $(this).parents('tr').find('.amend').eq(4).attr('src')
     let amend_pwd = $(this).parents('tr').find('.amend').eq(5).text()
     amends.push(amend_id, amend_name, amend_phone, amend_weixin, amend_file, amend_pwd);
-
-    localStorage.setItem("amends_saler", amends);
-    window.location.href = '../view/08update_saler.html'
+    console.log(amend_id);
+    localStorage.setItem("amends_ea", amends);
+    window.location.href = '../view/07update_ea.html'
     return false
 })
 
 
 
-// 点击删除销售员
 
+// 删除一个推广员
 $(tbody).delegate('#del', 'click', function(e) {
-    $.post('http://47.111.73.231:8080/delete_saler_byid/', { saler_id: `${$(this).val()}` }, function(data) {
+    $.post('http://47.111.73.231:8080/delete_ea_byid/', { ea_id: `${$(this).val()}` }, function(data) {
         location.reload();
         console.log(data);
     });

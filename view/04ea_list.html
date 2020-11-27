@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/list.css">
     <link rel="icon" href="../img/logo_icont.png" type="image/x-icon" />
     <link rel="shortcut icon" href="../img/logo_icont.png" type="image/x-icon" />
+    <script src="../public/jQuery/jQuery.js"></script>
 </head>
 
 <body>
@@ -22,8 +23,8 @@
         <form>
             <article class="form-group">
                 <article>
-                    <input type="email" class="form-csontrol" id="email" placeholder="输入手机号">
-                    <input type="button" class="btn btn-info find" value="查找">
+                    <input type="tel" class="form-csontrol" id="phone" placeholder="输入手机号">
+                    <input type="button" class="btn btn-info find" value="查找" id="find">
                 </article>
 
                 <article>
@@ -44,55 +45,24 @@
             <thead>
                 <tr class="table-info">
                     <th>录入时间</th>
-                    <th>销售员</th>
+                    <th>推广员</th>
                     <th>手机号</th>
-                    <th>销售顾问微信</th>
+                    <th>推广员微信</th>
                     <th>登录密码</th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>2020-11-14 13:52:58</td>
-                    <td>xxx</td>
-                    <td>11位手机号</td>
-                    <td>wx-123123</td>
-                    <td>90902</td>
-                    <td>
-                        <a href="12update_pwd.html">
-                            <button type="button" class="btn btn-info">修改</button>
-                        </a>
-                        <button type="button" class="btn btn-info">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2020-11-14 13:52:58</td>
-                    <td>xxx</td>
-                    <td>11位手机号</td>
-                    <td>wx-123123</td>
-                    <td>90902</td>
-                    <td>
-                        <a href="12update_pwd.html">
-                            <button type="button" class="btn btn-info">修改</button>
-                        </a>
-                        <button type="button" class="btn btn-info">删除</button>
-                    </td>
-                </tr>
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
 
     <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class=""> . . . . . </li>
-        <li class="page-item"><a class="page-link" href="#">10</a></li>
-        <li class="page-item"><a class="page-link" href="#">100</a></li>
-        <li class="page-item"><a class="page-link" href="#">跳到</a></li>
-        <li class="page-item">
-            <input type="text" class="form-csontrol seek">
-        </li>
+        <li class="page-item"><a class="page-link" href="#" id="first">1</a></li>
+        <li class="page-item"><a class="page-link" href="#" id="last">2</a></li>
+        <li class="page-item"><a class="page-link" href="#" id="last">3</a></li>
+        <li class="page-item"><a class="page-link" href="#" id="last">4</a></li>
     </ul>
+    <script src="../JS/04ea_list.js"></script>
 </body>
 
 </html>

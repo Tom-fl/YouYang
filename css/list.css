@@ -69,8 +69,23 @@ nav>div {
     padding: 0 0;
 }
 
+.table-bordered {
+    border: none;
+}
 
-/*  */
+
+/* 动态获取值样式 */
+
+.ajax_03saler_img {
+    width: 65px;
+    height: 65px;
+}
+
+.table-bordered tbody tr td span {
+    width: 5rem;
+    height: 2rem;
+    display: inline-block;
+}
 
 @media screen and (max-width:540px) {
     #tab {

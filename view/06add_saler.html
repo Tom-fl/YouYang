@@ -25,7 +25,7 @@
             <h1>添加销售员</h1>
         </div>
     </nav>
-
+    <div class="alert alert-success">成功！很好地完成了提交。</div>
     <div class="inputs">
         <form>
             <div class="form-group">
@@ -39,12 +39,12 @@
                 <input type="text" class="form-control" id="weixin" placeholder="微信号码">
             </div>
             <div class="input-group" id='file'>
-                <button type="button" class="btn btn-primary form-control" id="test3" onclick="document.getElementById('test1').click()">点击选择</button>
-                <input id="test1" type="file" class="form-control hidden" onchange="document.getElementById('test2').value = this.value" style="display: none;">
-                <input id="test2" type="button" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" class="btn btn-default form-control" value="二维码上传文件" onclick="document.getElementById('test1').click()">
+                <button type="button" class="btn btn-primary form-control" id="test3" onclick="document.getElementById('data').click()">点击选择</button>
+                <input id="data" type="file" class="form-control hidden" onchange="document.getElementById('test2').value = this.value" style="display: none;">
+                <input id="test2" type="button" accept="image/*" class="btn btn-default form-control" value="二维码上传文件" onclick="document.getElementById('data').click()">
             </div>
             <div class="sub">
-                <button type="submit" class="btn btn-primary  btn-success">保存</button>
+                <button type="button" class="btn btn-primary  btn-success" id="save">保存</button>
             </div>
         </form>
     </div>

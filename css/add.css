@@ -65,6 +65,17 @@ nav>div {
     padding-right: 10rem;
 }
 
+
+/* ajax */
+
+.alert {
+    display: none;
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    top: 15%;
+}
+
 @media screen and (max-width:540px) {
     body {
         /* background: #000; */
