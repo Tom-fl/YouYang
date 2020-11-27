@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <p>data</p>
+    <input id="data" type="file" name="upload" />
+    <input type="button" value="添加文件" id="btn" />
+
+</body>
+
+</html>
+<script>
+    $(function() {
+        $("#btn").click(function() {
+            console.log($('#data'));
+            var formData = new FormData();
+            formData.append("data", data.files[0]);
+            formData.append('submit', false);
+            $.ajax({
+                url: `http://127.0.0.1:8000/upload_img_file/`,
+                method: "POST",
+                cache: false, // 文件不设置缓存
+                data: formData,
+                processData: false, // 数据不被转换为字符串
+                contentType: false, // 上传文件时使用，避免jQuery对其操作
+                success: function(result) {
+                    console.log(result)
+                },
+                error: function(err) {
+
+                }
+            })
+        });
+    })
+</script>
