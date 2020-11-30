@@ -26,7 +26,6 @@ $('.page-link').click(function() {
 // 处理分页的函数
 function saler_page(number, index) {
     $.post('http://47.111.73.231:8080/saler_page/', { page_size: `${number}`, current_page: `${index}` }, function(data) {
-        // console.log(data.list);
         let list_gather = '';
         $(data.list).each(function(index, item) {
             list_gather += `<tr>
@@ -40,9 +39,10 @@ function saler_page(number, index) {
             <td>
                 <span class='span amend'>${item.p_pwd}</span>
                 <a href="08update_saler.html">
-                    <button type="button" class="btn btn-info" value='${item.p_id}' id='update'>修改</button>
+                    <button type="button" class="btn btn-info update" value='${item.p_id}' id='update'>修改</button>
                 </a>
                 <button type="button" class="btn btn-info amend" value='${item.p_id}' id='del'>删除</button>
+                <button type="button" class="btn btn-info amend" value='${item.p_id}' id='examine'>查看</button>
             </td>
         </tr>`
         });
@@ -56,6 +56,7 @@ $('#find').click(function() {
     dim_page(2, 1)
 });
 
+// 模糊查询的分页
 function dim_page(number, index) {
     let phone_val = $('#phone').val();
     if (phone_val == '') {
@@ -78,6 +79,7 @@ function dim_page(number, index) {
                     <button type="button" class="btn btn-info" value='${item.p_id}' id='update'>修改</button>
                 </a>
                 <button type="button" class="btn btn-info amend" value='${item.p_id}' id='del'>删除</button>
+                <button type="button" class="btn btn-info amend" value='${item.p_id}' id='examine'>查看</button>
             </td>
         </tr>`
             });
@@ -85,8 +87,6 @@ function dim_page(number, index) {
         });
     };
 };
-
-
 
 
 
@@ -102,18 +102,37 @@ $(tbody).delegate('#update', 'click', function(e) {
     amends.push(amend_id, amend_name, amend_phone, amend_weixin, amend_file, amend_pwd);
 
     localStorage.setItem("amends_saler", amends);
-    window.location.href = '../view/08update_saler.html'
+    // window.location.href = '../view/08update_saler.html'
     return false
-})
+});
 
 
 
 // 点击删除销售员
-
 $(tbody).delegate('#del', 'click', function(e) {
     $.post('http://47.111.73.231:8080/delete_saler_byid/', { saler_id: `${$(this).val()}` }, function(data) {
         location.reload();
-        console.log(data);
     });
     return false
+});
+
+
+// 点击查看和查看所有按钮
+$('body').on('click', '#to_see_all,#examine', function(e) {
+    // 条件成立 是点击查看所有的按钮
+    if (isNaN($(this).val())) {
+        window.localStorage.removeItem('saler_platform_one');
+        $.post('http://47.111.73.231:8080/get_all_stus_saler/', { page_size: `3`, current_page: `1` }, function(data) {
+            localStorage.setItem('saler_platform_all', JSON.stringify(data.list));
+            // window.location.href = '09saler_platform.html'
+            console.log(data);
+        });
+    } else { // 不成立是点击查看的按钮
+        window.localStorage.removeItem('saler_platform_all');
+        $.post('http://47.111.73.231:8080/get_all_stus_bysaler/', { saler_id: `${$(this).attr('value')}`, page_size: `3`, current_page: `1` }, function(data) {
+            localStorage.setItem('saler_platform_one', JSON.stringify(data.list));
+            // window.location.href = '09saler_platform.html'
+            console.log(data);
+        });
+    }
 });

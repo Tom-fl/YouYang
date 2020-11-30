@@ -7,7 +7,6 @@ $('#save').click(function() {
     let name = $('#name');
     let phone = $('#phone');
     let weixin = $('#weixin');
-    // console.log($(name).val() == '');
     if ($(name).val() == '' || $(phone).val() == '' || $(weixin).val() == '') {
         $('.alert')
             .removeClass('alert-success')

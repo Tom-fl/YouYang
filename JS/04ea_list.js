@@ -3,6 +3,8 @@ window.onload = function() {
     ea_page(2, 1);
 };
 
+
+
 let tbody = $('.table-bordered>tbody');
 let phone_dim = $('#phone');
 let page = 0;
@@ -36,13 +38,13 @@ function ea_page(number, index) {
                     <button type="button" class="btn btn-info amend" value='${item.p_id}' id='update'>修改</button>
                 </a>
                 <button type="button" class="btn btn-info amend" value='${item.p_id}' id='del'>删除</button>
+                <button type="button" class="btn btn-info amend" value='${item.p_id}' id='examine'>查看</button>
             </td>
         </tr>`
         });
         $(tbody).html(list_gather)
     })
 };
-
 
 
 // 根据手机号，查找销售员 (模糊查询)
@@ -52,6 +54,7 @@ $('#find').click(function() {
 // 处理模糊查询的分页
 function ea_dim_page(number, index) {
     let phone_val = $('#phone').val();
+    console.log(phone_val);
     if (phone_val == '') {
         console.log('请输入手机号');
     } else {
@@ -72,6 +75,7 @@ function ea_dim_page(number, index) {
                     <button type="button" class="btn btn-info amend" value='${item.p_id}' id='update'>修改</button>
                 </a>
                 <button type="button" class="btn btn-info amend" value='${item.p_id}' id='del'>删除</button>
+                <button type="button" class="btn btn-info amend" value='${item.p_id}' id='examine'>查看</button>
             </td>
         </tr>`
             });
@@ -81,7 +85,6 @@ function ea_dim_page(number, index) {
 };
 
 
-
 // 点击修改按钮
 let amends = [];
 $(tbody).delegate('#update', 'click', function(e) {
@@ -89,16 +92,12 @@ $(tbody).delegate('#update', 'click', function(e) {
     let amend_name = $(this).parents('tr').find('.amend').eq(1).text()
     let amend_phone = $(this).parents('tr').find('.amend').eq(2).text()
     let amend_weixin = $(this).parents('tr').find('.amend').eq(3).text()
-    let amend_file = $(this).parents('tr').find('.amend').eq(4).attr('src')
-    let amend_pwd = $(this).parents('tr').find('.amend').eq(5).text()
-    amends.push(amend_id, amend_name, amend_phone, amend_weixin, amend_file, amend_pwd);
-    console.log(amend_id);
-    localStorage.setItem("amends_ea", amends);
+    let amend_pwd = $(this).parents('tr').find('.amend').eq(4).text()
+    amends.push(amend_id, amend_name, amend_phone, amend_weixin, amend_pwd);
+    localStorage.setItem("amends_ea", JSON.stringify(amends));
     window.location.href = '../view/07update_ea.html'
     return false
 })
-
-
 
 
 // 删除一个推广员
@@ -108,4 +107,26 @@ $(tbody).delegate('#del', 'click', function(e) {
         console.log(data);
     });
     return false
+});
+
+
+
+// 点击查看和查看所有按钮
+$('body').on('click', '#to_see_all,#examine', function(e) {
+    // 条件成立 是点击查看所有的按钮
+    if (isNaN($(this).val())) {
+        window.localStorage.removeItem('ea_platform_one');
+        $.post('http://47.111.73.231:8080/get_all_clients_ea/', { ea_id: `1`, page_size: `3`, current_page: `1` }, function(data) {
+            localStorage.setItem('ea_platform_all', JSON.stringify(data.list));
+            // window.location.href = '09ea_platform.html'
+            console.log(data);
+        });
+    } else { // 不成立是点击查看的按钮
+        window.localStorage.removeItem('ea_platform_all');
+        $.get('http://47.111.73.231:8080/get_all_by_eaid/', { ea_id: `${$(this).attr('value')}`, page_size: `1`, current_page: `1` }, function(data) {
+            localStorage.setItem('ea_platform_one', JSON.stringify(data.list));
+            // window.location.href = '09ea_platform.html'
+            console.log(data);
+        });
+    }
 });
