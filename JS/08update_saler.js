@@ -14,7 +14,7 @@ $('#btn').click(function() {
     formData.append("data", data.files[0]);
     formData.append('submit', false);
     $.ajax({
-        url: "http://47.111.73.231:8080/upload_img_file/",
+        url: "http://39.106.26.6:8888/upload_img_file/",
         method: "POST",
         cache: false, // 文件不设置缓存
         data: formData,
@@ -28,7 +28,7 @@ $('#btn').click(function() {
             } else {
                 weixin_url = result.full_name
             }
-            $.post('http://47.111.73.231:8080/update_saler_byid/', { saler_id: `${id_old}`, p_name: `${$(name_old).val()}`, p_phone: `${$(phone_old).val()}`, p_weixin: `${$(weixin_old).val()}`, p_pwd: `${$(pwd_old).val()}`, weixin_img_url: `http://47.111.73.231:8080/${weixin_url}` }, function(data) {
+            $.post('http://39.106.26.6:8888/update_saler_byid/', { saler_id: `${id_old}`, p_name: `${$(name_old).val()}`, p_phone: `${$(phone_old).val()}`, p_weixin: `${$(weixin_old).val()}`, p_pwd: `${$(pwd_old).val()}`, weixin_img_url: `http://39.106.26.6:8888/${weixin_url}` }, function(data) {
                 window.location.href = '../view/03saler_list.html'
                 localStorage.removeItem("amends_saler");
             });

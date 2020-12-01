@@ -67,7 +67,7 @@ function if_add() {
         } else {
             whether = 0
         }
-        $.post('http://47.111.73.231:8080/get_stus_bywhether_add/', { whether_add: `${whether}`, page_size: `5`, current_page: `1` }, function(data) {
+        $.post('http://39.106.26.6:8888/get_stus_bywhether_add/', { whether_add: `${whether}`, page_size: `5`, current_page: `1` }, function(data) {
             let tr = '';
             $(data.list).each(function(index, item) {
                 if (item.whether_add == true) {
@@ -96,7 +96,7 @@ function if_add() {
 function add_client() {
     $(tbody).on('click', '#add_client', function() {
         let $this = this;
-        $.post('http://47.111.73.231:8080/add_stu_to_saler/', { stu_id: `${$(this).val()}` }, function(data) {
+        $.post('http://39.106.26.6:8888/add_stu_to_saler/', { stu_id: `${$(this).val()}` }, function(data) {
             console.log(data);
             if (data.info == '已经添加！') {
                 console.log($($this).val());

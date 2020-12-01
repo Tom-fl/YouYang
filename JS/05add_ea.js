@@ -16,7 +16,7 @@ $('#save').click(function() {
             .fadeIn(500)
     } else {
         console.log($(weixin).val());
-        $.post('http://47.111.73.231:8080/add_ea/', { p_name: `${$(name).val()}`, p_phone: `${$(phone).val()}`, p_weixin: `${$(weixin).val()}` }, function(data) {
+        $.post('http://39.106.26.6:8888/add_ea/', { p_name: `${$(name).val()}`, p_phone: `${$(phone).val()}`, p_weixin: `${$(weixin).val()}` }, function(data) {
             console.log(data);
             $('.alert ')
                 .fadeIn(500)
