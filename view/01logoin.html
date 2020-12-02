@@ -12,15 +12,24 @@
     <script src="../public/bootstrap/js/bootstrap.js"></script>
     <script src="../public/bootstrap/js/bootstrap.min.js"></script>
     <script src="../public/bootstrap/js/bootstrap.bundle.js"></script>
+    <link rel="icon" href="../img/logo_icont.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../img/logo_icont.png" type="image/x-icon" />
+    <style>
+        body {
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body>
-
     <div class="container-fluid">
         <div class="row login">
             <div class="col col-sm-12 col-xl-6 cl-12" style="background-color:#15928a;" id="logo_first">
                 <article class="logo_box">
-                    <img src="../img/login_log.png" alt="" class="logo">
+                    <a href="01logoin.html">
+                        <img src="../img/login_log.png" alt="" class="logo">
+                    </a>
                     <h1>
                         欢迎登录有样儿分量系统
                     </h1>
@@ -31,33 +40,33 @@
             </div>
             <div class="col login_input_box">
                 <article class="login_input">
-                    <form action="" class="login_form">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="登录角色" id="mail" name="email">
+                    <form action="./02admin.html" class="login_form">
+                        <div class="form-group input-group">
+                            <input type="text" class="form-control" placeholder="登录角色" id="role" name="erole">
                             <div class="btn-group dropright">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </button>
                                 <div class="dropdown-menu">
                                     <!-- Dropdown menu links -->
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
+                                    <a class="dropdown-item" href="javascript:">管理员页面</a>
+                                    <a class="dropdown-item" href="javascript:">销售员页面</a>
+                                    <a class="dropdown-item" href="javascript:">推广员页面</a>
+                                    <!-- <div class="dropdown-divider"></div> -->
+                                    <!-- <a class="dropdown-item" href="#">Separated link</a> -->
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="手机号码">
+                            <input type="text" class="form-control" id="phone" placeholder="手机号码">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="pwd" placeholder="密码">
                         </div>
                         <div class="form-group  login_pwd">
-                            <a href="#" class="login_alter_pwd">修改密码</a>
+                            <a href="12update_pwd.html" class="login_alter_pwd">修改密码</a>
                         </div>
                         <div class="form-group login_btn">
-                            <input type="submit" class="btn btn-info" value="登录">
-                            <input type="submit" class="btn btn-info" value="重置">
+                            <input type="submit" name="submit" class="btn btn-info" value="登录" id="enter">
+                            <input type="button" class="btn btn-info" value="重置" id="reset">
                         </div>
                     </form>
                 </article>
@@ -67,6 +76,8 @@
             </div>
         </div>
     </div>
+    <script src="../JS/reg.js"></script>
+    <script src="../JS/01login.js"></script>
 </body>
 
 </html>

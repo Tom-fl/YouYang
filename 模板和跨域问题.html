@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>有样儿测试</title>
+    <script src="./有样儿分量系统/public/jQuery/jQuery.js"></script>
+</head>
+
+<body>
+    <div id="div">
+    </div>
+    <script>
+        $.ajaxSetup({
+            cache: true,
+            type: 'POST',
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            dataType: "json",
+            error: function() {
+                console.log("error");
+            },
+            beforeSend: function(xhr) {
+                // xhr.setRequestHeader("USERNAME", "test");
+            }
+        });
+        $(function() {
+            // 注册
+            $.ajax({
+                type: 'POST',
+                url: "http://47.111.73.231:8080/get_saler_by_phone/",
+                data: {
+                    'p_phone': 13234567892
+                },
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

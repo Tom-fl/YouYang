@@ -5,35 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/add.css">
     <link rel="stylesheet" href="../public/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/add.css">
+    <script src="../public/jQuery/jQuery.js"></script>
+    <script src="../JS/reg.js"></script>
+    <link rel="icon" href="../img/logo_icont.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../img/logo_icont.png" type="image/x-icon" />
 </head>
 
 <body>
     <nav>
         <img src="../img/log.png" alt="">
         <div class="text">
-            <h1>修改销售员</h1>
+            <h1>修改密码</h1>
         </div>
     </nav>
 
     <div class="inputs">
-        <form>
+        <form action="" method="POST">
             <div class="form-group">
-                <input type="text" class="form-control" id="email" placeholder="姓名">
+                <input type="text" class="form-control" id="name" placeholder="姓名">
             </div>
 
             <div class="form-group">
-                <input type="text" class="form-control" id="pwd" placeholder="手机号码">
+                <input type="text" class="form-control" id="phone" placeholder="手机号码">
+            </div>
+            <!-- <div class="form-group">
+                <input type="text" class="form-control" id="weixin" placeholder="微信号码">
+            </div> -->
+            <!-- <div class="input-group" id='file'>
+                <button type="button" class="btn btn-primary form-control" id="test3" onclick="document.getElementById('test1').click()">点击选择</button>
+                <input id="test1" type="file" class="form-control hidden" onchange="document.getElementById('test2').value = this.value" style="display: none;">
+                <input id="test2" type="button" class="btn btn-default form-control" value="二维码上传文件" onclick="document.getElementById('test1').click()">
+            </div> -->
+            <div class="form-group">
+                <input type="password" class="form-control" id="pwd" placeholder="密码">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="pwd" placeholder="微信号码">
+                <input type="password" class="form-control" id="pwd" placeholder="新密码">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="pwd" placeholder="二维码(上传文件)">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="pwd" placeholder="密码">
+                <input type="password" class="form-control" id="pwd" placeholder="再次确认新密码">
             </div>
             <div class="sub">
                 <button type="submit" class="btn btn-primary  btn-success">修改</button>
@@ -44,6 +56,7 @@
         <span>重庆友祥儿教育科技有限公司</span>
         <span>重庆市江北区星耀天地21栋1408</span>
     </div>
+    <script src="../JS/12update.js"></script>
 </body>
 
 </html>
