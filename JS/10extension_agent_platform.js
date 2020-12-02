@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-$('.dropdown-menu').click((e) => {
-    let val = $(e.target).text();
-    $('.dropdown-toggle').text(val)
-})
-=======
-function init() {
+function ea_init() {
     if_user(); // 判断哪个用户登录进来，并渲染值(比如是管理员登录进来的，就渲染管理员对应的值)
 };
 let login_name = window.localStorage.getItem('login_user'); // 登录的什么角色
@@ -52,7 +46,7 @@ function if_user() {
             let end_time = $('#end_time').val(); // 结束时间
             if (start_time == '' && end_time == '') {
                 e.preventDefault()
-                $('.hint')
+                $('.work_terrace')
                     .show('fast', function() {
                         $(this)
                             .css('visibility', 'inherit')
@@ -150,7 +144,7 @@ function if_user() {
             let end_time = $('#end_time').val(); // 结束时间
             if (start_time == '' && end_time == '') {
                 e.preventDefault()
-                $('.hint')
+                $('.work_terrace')
                     .show('fast', function() {
                         $(this)
                             .css('visibility', 'inherit')
@@ -213,5 +207,4 @@ function if_user() {
 };
 
 
-init();
->>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
+ea_init();

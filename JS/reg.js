@@ -16,11 +16,7 @@ function fn_phone(element) {
 // 至少5个字符 不能包含特殊字符（非数字字母）
 function fn_password(element) {
     element.change(function() {
-<<<<<<< HEAD
-        let password_reg = /^(?=.*[a-z])(?=.*)[a-z\d]{5,}$/;
-=======
         let password_reg = /^[A-Za-z0-9]{6,20}$/;
->>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
         if (password_reg.test($(this).val())) {
             $(this).attr('placeholder', '密码')
                 .css('border', '1px solid teal')

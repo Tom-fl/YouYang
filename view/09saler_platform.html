@@ -28,10 +28,11 @@
         <form>
             <article class="form-group">
                 <article>
-                    <input type="email" class="form-csontrol" id="email" placeholder="输入手机号">
+                    <input type="email" class="form-csontrol" id="weixin" placeholder="输入微信号">
                     <input type="button" class="btn btn-info find" value="查找">
                     <div class="dropdown">
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" id="if_add">是否添加</button>
+                        <input type="text" id="if_add_none">
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">是</a>
                             <a class="dropdown-item" href="#">否</a>
@@ -39,12 +40,19 @@
                     </div>
                 </article>
             </article>
-            <div class="card bg-info text-white mx-auto">
-                <div class="card-body">共有数据:100条</div>
-            </div>
 
         </form>
     </div>
+
+
+    <div class="card">
+        <div class="card-body">简单的卡片</div>
+    </div>
+
+    <div class="hint">
+        <div class="hint-body">??数据??</div>
+    </div>
+
 
     <!-- table -->
     <div class="table" id="tab">
@@ -63,15 +71,7 @@
     </div>
 
     <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class=""> . . . . . </li>
-        <li class="page-item"><a class="page-link" href="#">10</a></li>
-        <li class="page-item"><a class="page-link" href="#">100</a></li>
-        <li class="page-item"><a class="page-link" href="#">跳到</a></li>
-        <li class="page-item">
-            <input type="text" class="form-csontrol seek">
-        </li>
+
     </ul>
     <script src="../JS/09saler_platform.js"></script>
 </body>

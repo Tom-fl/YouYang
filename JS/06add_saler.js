@@ -18,11 +18,7 @@ $('#save').click(function() {
         formData.append("data", data.files[0]);
         formData.append('submit', false);
         $.ajax({
-<<<<<<< HEAD
-            url: "http://47.111.73.231:8080/upload_img_file/",
-=======
             url: "http://39.106.26.6:8888/upload_img_file/",
->>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
             method: "POST",
             cache: false, // 文件不设置缓存
             data: formData,
@@ -34,11 +30,7 @@ $('#save').click(function() {
                 let weixin = $('#weixin');
                 console.log(result);
                 console.log(name);
-<<<<<<< HEAD
-                $.post('http://47.111.73.231:8080/add_saler/', { p_name: `${$(name).val()}`, p_phone: `${$(phone).val()}`, p_weixin: `${$(weixin).val()}`, weixin_img_url: `http://47.111.73.231:8080/${result.full_name}` }, function(data) {
-=======
                 $.post('http://39.106.26.6:8888/add_saler/', { p_name: `${$(name).val()}`, p_phone: `${$(phone).val()}`, p_weixin: `${$(weixin).val()}`, weixin_img_url: `http://39.106.26.6:8888/${result.full_name}` }, function(data) {
->>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
                     console.log(data);
                     $('.alert ')
                         .fadeIn(500)
