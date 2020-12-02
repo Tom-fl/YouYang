@@ -9,7 +9,11 @@ let pwd = $('#pwd').val(amends_ea_new[4]);
 // 点击保存修改值
 $('.btn-success').click(function() {
     console.log($(name).val());
+<<<<<<< HEAD
     $.post('http://47.111.73.231:8080/update_ea_byid/', { ea_id: `${amends_ea_new[0]}`, p_name: `${$(name).val()}`, p_phone: `${$(phone).val()}`, p_weixin: `${$(weixin).val()}`, p_pwd: `${$(pwd).val()}` }, function(data) {
+=======
+    $.post('http://39.106.26.6:8888/update_ea_byid/', { ea_id: `${amends_ea_new[0]}`, p_name: `${$(name).val()}`, p_phone: `${$(phone).val()}`, p_weixin: `${$(weixin).val()}`, p_pwd: `${$(pwd).val()}` }, function(data) {
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
         $('.alert').show(200)
         setTimeout(function() {
             $('.alert').hide(300)

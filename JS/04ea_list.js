@@ -1,10 +1,17 @@
 // 初始化分页的销售员
 window.onload = function() {
+<<<<<<< HEAD
     ea_page(2, 1);
 };
 
 
 
+=======
+    ea_page(2, 2);
+};
+
+
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
 let tbody = $('.table-bordered>tbody');
 let phone_dim = $('#phone');
 let page = 0;
@@ -24,9 +31,18 @@ $('.page-link').click(function() {
 
 // 处理分页的函数
 function ea_page(number, index) {
+<<<<<<< HEAD
     $.post('http://47.111.73.231:8080/ea_page/', { page_size: `${number}`, current_page: `${index}` }, function(data) {
         let list_gather = '';
         $(data.list).each(function(index, item) {
+=======
+    $.post('http://39.106.26.6:8888/ea_page/', { page_size: `${number}`, current_page: `${index}` }, function(data) {
+        let ea_id_arr = [];
+        let list_gather = '';
+        $(data.list).each(function(index, item) {
+            console.log(data);
+            ea_id_arr.push(item.p_id);
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
             list_gather += `<tr>
             <td class='amend'>${item.add_date}</td>
             <td class='amend'>${item.p_name}</td>
@@ -42,7 +58,11 @@ function ea_page(number, index) {
             </td>
         </tr>`
         });
+<<<<<<< HEAD
         $(tbody).html(list_gather)
+=======
+        $(tbody).html(list_gather);
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
     })
 };
 
@@ -58,7 +78,11 @@ function ea_dim_page(number, index) {
     if (phone_val == '') {
         console.log('请输入手机号');
     } else {
+<<<<<<< HEAD
         $.post('http://47.111.73.231:8080/get_saler_by_phone/', { phone: `${phone_val}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
+=======
+        $.post('http://39.106.26.6:8888/get_saler_by_phone/', { phone: `${phone_val}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
             let list_gather = '';
             $(data.list).each(function(index, item) {
                 list_gather += `<tr>
@@ -102,7 +126,11 @@ $(tbody).delegate('#update', 'click', function(e) {
 
 // 删除一个推广员
 $(tbody).delegate('#del', 'click', function(e) {
+<<<<<<< HEAD
     $.post('http://47.111.73.231:8080/delete_ea_byid/', { ea_id: `${$(this).val()}` }, function(data) {
+=======
+    $.post('http://39.106.26.6:8888/delete_ea_byid/', { ea_id: `${$(this).val()}` }, function(data) {
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
         location.reload();
         console.log(data);
     });
@@ -112,21 +140,40 @@ $(tbody).delegate('#del', 'click', function(e) {
 
 
 // 点击查看和查看所有按钮
+<<<<<<< HEAD
 $('body').on('click', '#to_see_all,#examine', function(e) {
     // 条件成立 是点击查看所有的按钮
     if (isNaN($(this).val())) {
         window.localStorage.removeItem('ea_platform_one');
         $.post('http://47.111.73.231:8080/get_all_clients_ea/', { ea_id: `1`, page_size: `3`, current_page: `1` }, function(data) {
+=======
+// 这个咱是先用不到了
+/*
+   $('body').on('click', '#to_see_all,#examine', function(e) {
+    // 条件成立 是点击查看所有的按钮
+    if (isNaN($(this).val())) {
+        window.localStorage.removeItem('ea_platform_one');
+        $.post('http://39.106.26.6:8888/get_all_clients_ea/', { ea_id: `1`, page_size: `3`, current_page: `1` }, function(data) {
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
             localStorage.setItem('ea_platform_all', JSON.stringify(data.list));
             // window.location.href = '09ea_platform.html'
             console.log(data);
         });
     } else { // 不成立是点击查看的按钮
         window.localStorage.removeItem('ea_platform_all');
+<<<<<<< HEAD
         $.get('http://47.111.73.231:8080/get_all_by_eaid/', { ea_id: `${$(this).attr('value')}`, page_size: `1`, current_page: `1` }, function(data) {
+=======
+        $.get('http://39.106.26.6:8888/get_all_by_eaid/', { ea_id: `${$(this).attr('value')}`, page_size: `1`, current_page: `1` }, function(data) {
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
             localStorage.setItem('ea_platform_one', JSON.stringify(data.list));
             // window.location.href = '09ea_platform.html'
             console.log(data);
         });
     }
+<<<<<<< HEAD
 });
+=======
+});
+ */
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47

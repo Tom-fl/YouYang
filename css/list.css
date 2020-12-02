@@ -87,6 +87,23 @@ nav>div {
     display: inline-block;
 }
 
+<<<<<<< HEAD
+=======
+.hint {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-top: 2rem;
+    visibility: hidden;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-sizing: border-box;
+}
+
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
 @media screen and (max-width:540px) {
     #tab {
         width: 100%;

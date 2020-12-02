@@ -30,12 +30,17 @@ function phoneAndpwd_verify() {
     $('#enter').click(function() {
         let phone_value = $('#phone').val().trim();
         let pwd_value = $('#pwd').val();
+<<<<<<< HEAD
+=======
+        let user_name = '';
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
         if (($('.form-control').val() == '') || ($('#phone').val() == '') || ($('#pwd').val() == '')) {
             let inpts = $('.form-control');
             $(inpts).each(function(index, item) {
                 $(item).css('border', '1px solid red').val('');
             });
         } else {
+<<<<<<< HEAD
             $.post('http://47.111.73.231:8080/login/', { p_phone: `${phone_value}`, p_role: `${index}`, p_pwd: `${pwd_value}` }, function(data) {
                 console.log(pwd_value);
                 if (index == 0 && phone_value == '13678912345' && pwd_value == 'czf2afeng') {
@@ -54,6 +59,30 @@ function phoneAndpwd_verify() {
                         .css('border', '1px solid red')
                 }
             }, 'json');
+=======
+            if (index == 0) {
+                user_name = 'admin'
+            } else if (index == 1) {
+                user_name = 'saler'
+            } else if (index == 2) {
+                user_name = 'ea'
+            }
+            $.post('http://39.106.26.6:8888/login/', { p_phone: `${phone_value}`, p_role: `${user_name}`, p_pwd: `${pwd_value}` }, function(data) {
+                if (user_name == 'admin' && data.status == 'Ok') {
+                    window.localStorage.setItem('login_user', $('#role').val());
+                    window.localStorage.setItem('login_id', data.user.p_id)
+                    window.location.href = '02admin.html'
+                } else if (user_name == 'saler' && data.status == 'Ok') {
+                    window.localStorage.setItem('login_user', $('#role').val());
+                    window.localStorage.setItem('login_id', data.user.p_id);
+                    window.location.href = '09saler_platform.html'
+                } else if (user_name == 'ea' && data.status == 'Ok') {
+                    window.localStorage.setItem('login_user', $('#role').val());
+                    window.localStorage.setItem('login_id', data.user.p_id)
+                    window.location.href = '10extension_agent_platform.html'
+                }
+            });
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
         };
         return false
     });
@@ -67,7 +96,10 @@ function revamp_btn() {
         console.log(arr);
         return false
     })
+<<<<<<< HEAD
 
+=======
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
 };
 
 

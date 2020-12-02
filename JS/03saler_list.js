@@ -25,7 +25,11 @@ $('.page-link').click(function() {
 
 // 处理分页的函数
 function saler_page(number, index) {
+<<<<<<< HEAD
     $.post('http://47.111.73.231:8080/saler_page/', { page_size: `${number}`, current_page: `${index}` }, function(data) {
+=======
+    $.post('http://39.106.26.6:8888/saler_page/', { page_size: `${number}`, current_page: `${index}` }, function(data) {
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
         let list_gather = '';
         $(data.list).each(function(index, item) {
             list_gather += `<tr>
@@ -62,7 +66,11 @@ function dim_page(number, index) {
     if (phone_val == '') {
         console.log('请输入手机号');
     } else {
+<<<<<<< HEAD
         $.post('http://47.111.73.231:8080/get_saler_by_phone/', { phone: `${phone_val}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
+=======
+        $.post('http://39.106.26.6:8888/get_saler_by_phone/', { phone: `${phone_val}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
             let list_gather = '';
             $(data.list).each(function(index, item) {
                 list_gather += `<tr>
@@ -110,7 +118,11 @@ $(tbody).delegate('#update', 'click', function(e) {
 
 // 点击删除销售员
 $(tbody).delegate('#del', 'click', function(e) {
+<<<<<<< HEAD
     $.post('http://47.111.73.231:8080/delete_saler_byid/', { saler_id: `${$(this).val()}` }, function(data) {
+=======
+    $.post('http://39.106.26.6:8888/delete_saler_byid/', { saler_id: `${$(this).val()}` }, function(data) {
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
         location.reload();
     });
     return false
@@ -122,14 +134,22 @@ $('body').on('click', '#to_see_all,#examine', function(e) {
     // 条件成立 是点击查看所有的按钮
     if (isNaN($(this).val())) {
         window.localStorage.removeItem('saler_platform_one');
+<<<<<<< HEAD
         $.post('http://47.111.73.231:8080/get_all_stus_saler/', { page_size: `3`, current_page: `1` }, function(data) {
+=======
+        $.post('http://39.106.26.6:8888/get_all_stus_saler/', { page_size: `3`, current_page: `1` }, function(data) {
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
             localStorage.setItem('saler_platform_all', JSON.stringify(data.list));
             // window.location.href = '09saler_platform.html'
             console.log(data);
         });
     } else { // 不成立是点击查看的按钮
         window.localStorage.removeItem('saler_platform_all');
+<<<<<<< HEAD
         $.post('http://47.111.73.231:8080/get_all_stus_bysaler/', { saler_id: `${$(this).attr('value')}`, page_size: `3`, current_page: `1` }, function(data) {
+=======
+        $.post('http://39.106.26.6:8888/get_all_stus_bysaler/', { saler_id: `${$(this).attr('value')}`, page_size: `3`, current_page: `1` }, function(data) {
+>>>>>>> 148ed91158ab24d22384edac529c9e11b221ef47
             localStorage.setItem('saler_platform_one', JSON.stringify(data.list));
             // window.location.href = '09saler_platform.html'
             console.log(data);
