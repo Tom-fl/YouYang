@@ -3,7 +3,6 @@ function init() {
     fn_password($('#pwd')); //密码正则验证
     phoneAndpwd_verify(); //手机ajax密码登录
     reset_btn(); //重置
-    revamp_btn(); //修改密码
 };
 let phone_value = $('#phone');
 let pwd_value = $('#pwd');
@@ -37,7 +36,6 @@ function phoneAndpwd_verify() {
                 $(item).css('border', '1px solid red').val('');
             });
         } else {
-            console.log(index);
             if (index == 0) {
                 user_name = 'admin'
             } else if (index == 1) {
@@ -67,15 +65,6 @@ function phoneAndpwd_verify() {
     });
 };
 
-
-function revamp_btn() {
-    let arr = [];
-    $('.login_alter_pwd').click(function() {
-        arr.push($(phone_value).val(), $(pwd_value).val())
-        console.log(arr);
-        return false
-    })
-};
 
 
 function reset_btn() {

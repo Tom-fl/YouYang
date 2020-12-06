@@ -23,10 +23,10 @@ $('.pagination').on('click', '.page-item', function() {
 
 // 点击跳到按钮
 $('.pagination').on('click', '#jump_page', function() {
+
     page = $('#page_id').val(); // 跳到指定数据的值
     console.log(page);
-
-    if ($('#page_id').val() > $('.page-item').last().text() || $('#page_id').val() <= 0) {
+    if (parseInt(page) > parseInt($('.page-item').last().text()) || parseInt(page) > parseInt($('.page-item').last().text())) {
         $('.card')
             .css({
                 'visibility': 'revert',
@@ -61,7 +61,7 @@ function saler_page(number, index) {
             }
             $('.pagination').html(li);
         } else {
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i < 5; i++) {
                 li += `<li class="page-link page-item">${i}</li>`
             }
             $('.pagination').html(li);
@@ -118,7 +118,7 @@ function dim_page(number, index) {
                 }
                 $('.pagination').html(li);
             } else {
-                for (let i = 1; i <= 5; i++) {
+                for (let i = 1; i < 5; i++) {
                     li += `<li class="page-link page-item">${i}</li>`
                 }
                 $('.pagination').html(li);

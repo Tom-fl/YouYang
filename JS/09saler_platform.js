@@ -2,20 +2,19 @@
 window.onload = function() {
     if (login_name == '销售员页面') {
         saler_page_sell(1, 1);
-    } else {
+    } else if (login_name == '管理员页面') {
         saler_page(1, 1);
     }
 };
 
 
 let login_name = window.localStorage.getItem('login_user'); // 登录的什么角色
-let ea_id = JSON.parse(window.localStorage.getItem('login_id')); // 登录的id
+let saler_id = JSON.parse(window.localStorage.getItem('login_id')); // 登录的id
 let tbody = $('tbody');
 let weixin_dim = $('#weixin');
 let if_add_none = $('#if_add_none');
 let page = 0;
-
-
+let whether = null;
 
 if (login_name == '销售员页面') {
     console.log('销售员');
@@ -31,7 +30,7 @@ if (login_name == '销售员页面') {
         } else if ($(if_add_none).val() == '') {
             dim_page(1, page)
         } else {
-            is_add_fn(1, page);
+            is_add_fn($('#if_add_none').val(), 1, page)
         }
     });
 
@@ -68,14 +67,27 @@ if (login_name == '销售员页面') {
     // 处理分页的函数(销售员)
     function saler_page_sell(number, index) {
         // 获取所有销售员的相关信息(管理员)
-        $.post('http://39.106.26.6:8888/get_all_stus_bysaler/', { saler_id: `${ea_id}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
+        $.post('http://39.106.26.6:8888/saler_platform_page/', { saler_id: `${saler_id}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
+            // 显示多少条数据
+            $('.hint-body').text(data.counts + '条数据');
+            if (data.counts == 0) {
+                $('.card')
+                    .text('没得数据')
+                    .css({
+                        'visibility': 'revert',
+                        'color': 'red'
+                    })
+            } else {
+                $('.card').css('visibility', 'hidden')
+            }
+
             let li = ''
                 // 判断下面的小按钮
-            if (data.sum_pages <= 5) {
-                for (let i = 1; i <= data.sum_pages; i++) {
+            if (data.counts < 5) {
+                for (let i = 1; i <= data.counts; i++) {
                     li += `<li class="page-link page-item">${i}</li>`
                 }
-                $('.pagination').html(li);
+                $('.pagination').html(li)
             } else {
                 for (let i = 1; i <= 5; i++) {
                     li += `<li class="page-link page-item">${i}</li>`
@@ -83,25 +95,28 @@ if (login_name == '销售员页面') {
                 $('.pagination').html(li);
                 $('.pagination').append(`<li class="page-link">...</li><li class="page-link page-item">${data.sum_pages}</li><li class="page-link" id='jump_page'>跳到</li><li class="page-link"><input type='text' id='page_id'></li>`)
             }
+
             // 显示多少条数据
             $('.hint-body').text(data.counts + '条数据');
 
             let tr = '';
             $(data.list).each(function(index, item) {
-                $('.add_client').css('display', 'none')
                 if (item.whether_add == true) {
                     item.whether_add = '已添加'
                 } else {
                     item.whether_add = '未添加'
                 }
+
                 tr += `
-                <tr>
-                    <td>${item.add_date}</td>
-                    <td>${item.weixin}</td>
-                    <td>${item.extensionagent_name}</td>
-                    <td>${item.whether_add}</td>
-                    <td>
-                        <button type="button" class="btn btn-info add_client"data-toggle="modal" data-target="#myModal" id=''>添加到我的客户</button>
+                  <tr>
+                       <td>${item.add_date}</td>
+                      <td>
+                            <p>${item.weixin}</p>    
+                        </td>
+                      <td>${item.saler_name}</td>
+                      <td>${item.whether_add}</td>
+                      <td>
+                        <button type="button" class="btn btn-info add_client"data-toggle="modal" data-target="#myModal" value='${item.s_id}'>添加到我的客户</button>
                     </td>
                 </tr>
                 `;
@@ -115,6 +130,13 @@ if (login_name == '销售员页面') {
                     $(this).css('display', 'none')
                 }
             });
+
+
+            // 点击添加到我的客户按钮(销售员)
+            $('.add_client').click(function() {
+                is_add_client($(this).val());
+            });
+
         });
     };
 
@@ -130,7 +152,7 @@ if (login_name == '销售员页面') {
         if (weixin_val == '') {
             console.log('请输入微信');
         } else {
-            $.post('http://39.106.26.6:8888/get_stus_like_byweixin_saler_id/', { saler_id: `${ea_id}`, weixin: `${weixin_val}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
+            $.post('http://39.106.26.6:8888/get_stus_like_byweixin_saler_id/', { saler_id: `${saler_id}`, weixin: `${weixin_val}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
                 if (data.counts == 0) {
                     $('.card')
                         .css({
@@ -156,36 +178,41 @@ if (login_name == '销售员页面') {
                     }
                     $('.pagination').html(li);
                 } else {
-                    for (let i = 1; i <= 5; i++) {
+                    for (let i = 1; i < 5; i++) {
                         li += `<li class="page-link page-item">${i}</li>`
                     }
                     $('.pagination').html(li);
                     $('.pagination').append(`<li class="page-link">...</li><li class="page-link page-item">${data.sum_pages}</li><li class="page-link" id='jump_page'>跳到</li><li class="page-link"><input type='text' id='page_id'></li>`)
                 }
-                // 显示多少条数据
-                $('.hint-body').text(data.counts + '条数据');
 
                 let tr = '';
                 $(data.list).each(function(index, item) {
-                    $('.add_client').css('display', 'none')
                     if (item.whether_add == true) {
                         item.whether_add = '已添加'
                     } else {
                         item.whether_add = '未添加'
                     }
+
                     tr += `
-                <tr>
-                    <td>${item.add_date}</td>
-                    <td>${item.weixin}</td>
-                    <td>${item.extensionagent_name}</td>
-                    <td>${item.whether_add}</td>
-                    <td>
-                        <button type="button" class="btn btn-info add_client"data-toggle="modal" data-target="#myModal" id=''>添加到我的客户</button>
+                  <tr>
+                       <td>${item.add_date}</td>
+                      <td>
+                            <p>${item.weixin}</p>    
+                        </td>
+                      <td>${item.saler_name}</td>
+                      <td>${item.whether_add}</td>
+                      <td>
+                        <button type="button" class="btn btn-info add_client"data-toggle="modal" data-target="#myModal" value='${item.s_id}'>添加到我的客户</button>
                     </td>
                 </tr>
                 `;
                 });
                 $(tbody).html(tr)
+
+                // 点击添加到我的客户按钮(销售员)
+                $('.add_client').click(function() {
+                    is_add_client($(this).val());
+                });
             });
         };
     };
@@ -193,20 +220,31 @@ if (login_name == '销售员页面') {
 
     // 点击是否添加(销售员)
     $('.dropdown-item').click(function() {
-        is_add_fn(1, 1, this);
-        $('#if_add_none').val($(this).text())
+        $('#if_add_none').val($(this).text());
+        is_add_fn($(this).text(), 1, 1, this);
     });
 
     // 点击是否添加调用的函数(销售员)
-    function is_add_fn(number, index, element) {
-        // element 判断点击的是 哪个按钮
-        let whether = 0;
-        if ($(element).text() == '是') {
+    function is_add_fn(whether_add, number, index) {
+        if (whether_add == '是') {
             whether = 1
-        } else {
+        } else if (whether_add == '否') {
             whether = 0
         }
-        $.post('http://39.106.26.6:8888/get_stus_bywhether_add_saler_id/', { saler_id: `${ea_id}`, whether_add: `${whether}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
+        $.post('http://39.106.26.6:8888/get_stus_bywhether_add_saler_id/', { saler_id: `${saler_id}`, whether_add: `${whether}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
+            // 显示多少条数据
+            $('.hint-body').text(data.counts + '条数据');
+            if (data.counts == 0) {
+                $('.card')
+                    .text('没得数据')
+                    .css({
+                        'visibility': 'revert',
+                        'color': 'red'
+                    })
+            } else {
+                $('.card').css('visibility', 'hidden')
+            }
+
             let li = ''
                 // 判断下面的小按钮
             if (data.sum_pages <= 5) {
@@ -215,7 +253,7 @@ if (login_name == '销售员页面') {
                 }
                 $('.pagination').html(li);
             } else {
-                for (let i = 1; i <= 5; i++) {
+                for (let i = 1; i < 5; i++) {
                     li += `<li class="page-link page-item">${i}</li>`
                 }
                 $('.pagination').html(li);
@@ -230,20 +268,16 @@ if (login_name == '销售员页面') {
                     item.whether_add = '未添加'
                 }
 
-                // 显示多少条数据
-                $('.hint-body').text(data.counts + '条数据');
-
                 tr += `
                   <tr>
                        <td>${item.add_date}</td>
-                      <td>${item.weixin}</td>
                       <td>
-                            <p>${item.ea_name}</p>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" value='${item.saler_id}'>修改微信</button>
-                      </td>
+                            <p>${item.weixin}</p>    
+                        </td>
+                      <td>${item.saler_name}</td>
                       <td>${item.whether_add}</td>
                       <td>
-                        <button type="button" class="btn btn-info add_client"data-toggle="modal" data-target="#myModal" id=''>添加到我的客户</button>
+                        <button type="button" class="btn btn-info add_client"data-toggle="modal" data-target="#myModal" value='${item.s_id}'>添加到我的客户</button>
                     </td>
                 </tr>
                 `;
@@ -257,14 +291,27 @@ if (login_name == '销售员页面') {
                     $(this).css('display', 'none')
                 }
             });
+
+            // 点击添加到我的客户按钮(销售员)
+            $('.add_client').click(function() {
+                is_add_client($(this).val());
+            });
         })
     };
 
-} else {
+
+    // 点击添加到我的客户调用的函数(销售员)
+    function is_add_client(stu_id) {
+        $.post('http://39.106.26.6:8888/add_stu_to_saler/', { stu_id: `${stu_id}` }, function(data) {
+            console.log(data);
+        })
+    };
+
+} else if (login_name == '管理员页面') {
     console.log('管理员');
 
     // 点击1234按钮切换分页
-    $('.paginabtion').on('click', '.page-item', function() {
+    $('.pagination').on('click', '.page-item', function() {
         page = $(this).text();
         // 如果模糊查询里
         // 填值了就掉模糊查询的方法
@@ -274,7 +321,7 @@ if (login_name == '销售员页面') {
         } else if ($(if_add_none).val() == '') {
             dim_page(1, page)
         } else {
-            is_add_fn(1, page);
+            is_add_fn($('#if_add_none').val(), 1, page)
         }
     });
 
@@ -321,7 +368,7 @@ if (login_name == '销售员页面') {
                 }
                 $('.pagination').html(li);
             } else {
-                for (let i = 1; i <= 5; i++) {
+                for (let i = 1; i < 5; i++) {
                     li += `<li class="page-link page-item">${i}</li>`
                 }
                 $('.pagination').html(li);
@@ -359,6 +406,11 @@ if (login_name == '销售员页面') {
                     $(this).css('display', 'none')
                 }
             });
+
+            // 点击添加到我的客户按钮(管理员)
+            $('.add_client').click(function() {
+                is_add_client($(this).val());
+            });
         });
     };
 
@@ -391,7 +443,6 @@ if (login_name == '销售员页面') {
                         .text('填写或操作错误')
                 }
 
-
                 let li = ''
                     // 判断下面的小按钮
                 if (data.sum_pages <= 5) {
@@ -400,7 +451,7 @@ if (login_name == '销售员页面') {
                     }
                     $('.pagination').html(li);
                 } else {
-                    for (let i = 1; i <= 5; i++) {
+                    for (let i = 1; i < 5; i++) {
                         li += `<li class="page-link page-item">${i}</li>`
                     }
                     $('.pagination').html(li);
@@ -430,36 +481,39 @@ if (login_name == '销售员页面') {
                 `;
                 });
                 $(tbody).html(tr)
+
+                // 点击添加到我的客户按钮(管理员)
+                $('.add_client').click(function() {
+                    is_add_client($(this).val());
+                });
             });
         };
     };
 
-
     // 点击是否添加(管理员)
     $('.dropdown-item').click(function() {
-        is_add_fn(1, 1, this);
-        $('#if_add_none').val($(this).text())
+        $('#if_add_none').val($(this).text());
+        is_add_fn($(this).text(), 1, 1, this);
     });
 
     // 点击是否添加调用的函数(管理员)
-    function is_add_fn(number, index, element) {
-        // element 判断点击的是 哪个按钮
-        let whether = 0;
-        if ($(element).text() == '是') {
+    function is_add_fn(whether_add, number, index) {
+        if (whether_add == '是') {
             whether = 1
-        } else {
+        } else if (whether_add == '否') {
             whether = 0
         }
+
         $.post('http://39.106.26.6:8888/get_stus_bywhether_add/', { whether_add: `${whether}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
             let li = ''
                 // 判断下面的小按钮
-            if (data.sum_pages <= 5) {
+            if (data.sum_pages < 5) {
                 for (let i = 1; i <= data.sum_pages; i++) {
                     li += `<li class="page-link page-item">${i}</li>`
                 }
                 $('.pagination').html(li);
             } else {
-                for (let i = 1; i <= 5; i++) {
+                for (let i = 1; i < 5; i++) {
                     li += `<li class="page-link page-item">${i}</li>`
                 }
                 $('.pagination').html(li);
@@ -501,8 +555,19 @@ if (login_name == '销售员页面') {
                     $(this).css('display', 'none')
                 }
             });
+
+            // 点击添加到我的客户按钮(管理员)
+            $('.add_client').click(function() {
+                is_add_client($(this).val());
+            });
         })
     };
 
+    // 点击添加到我的客户调用的函数(管理员)
+    function is_add_client(stu_id) {
+        $.post('http://39.106.26.6:8888/add_stu_to_saler/', { stu_id: `${stu_id}` }, function(data) {
+            console.log(data);
+        })
+    };
 
 };

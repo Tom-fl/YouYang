@@ -38,6 +38,7 @@
                     <a href="http://39.106.26.6:8888/export_all_by_start_end_time/" class="btn btn-info" id="export">导出</a>
                     <div class="dropdown">
                         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">是否添加</button>
+                        <input type="text" id="if_add_none">
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">是</a>
                             <a class="dropdown-item" href="#">否</a>
@@ -47,6 +48,16 @@
             </article>
         </form>
     </div>
+
+
+    <div class="card">
+        <div class="card-body">简单的卡片</div>
+    </div>
+
+    <div class="hint">
+        <div class="hint-body">??数据??</div>
+    </div>
+
 
     <!-- table -->
     <div class="table" id="tab">
@@ -81,7 +92,8 @@
                                 <div class="alert">
                                     <h5 class="text-white mt-2 mr-1">微信</h5>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" placeholder="输入微信号">
+                                        <input type="text" class="form-control" id="import_weixin" placeholder="输入微信号">
+                                        <input type="text" class="old_weixin">
                                     </div>
                                 </div>
                             </div>
@@ -117,14 +129,15 @@
                         <div class="alert">
                             <h5 class="text-white mt-2 mr-1">QQ</h5>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="email" placeholder="输入QQ号">
+                                <input type="email" class="form-control" id="qq_value" placeholder="输入QQ号">
+                                <input type="text" id="qq_value_none">
                             </div>
                         </div>
                     </div>
 
                     <!-- 模态框底部 -->
                     <div class="modal-footer bg-info ">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">保存</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="qq_save">保存</button>
                     </div>
 
                 </div>
@@ -134,18 +147,7 @@
 
 
     </div>
-
-    <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class=""> . . . . . </li>
-        <li class="page-item"><a class="page-link" href="#">10</a></li>
-        <li class="page-item"><a class="page-link" href="#">100</a></li>
-        <li class="page-item"><a class="page-link" href="#">跳到</a></li>
-        <li class="page-item">
-            <input type="text" class="form-csontrol seek">
-        </li>
-    </ul>
+    <ul class="pagination"></ul>
     <script src="../JS/10extension_agent_platform.js"></script>
 </body>
 

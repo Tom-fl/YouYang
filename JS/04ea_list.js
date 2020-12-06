@@ -2,8 +2,9 @@
 window.onload = function() {
     ea_page(1, 2);
 };
+let login_name = window.localStorage.getItem('login_user'); // 登录的什么角色
 
-
+// if (login_name == '管理员页面' || login_name == '推广员页面') {
 let tbody = $('.table-bordered>tbody');
 let phone_dim = $('#phone');
 let page = 0;
@@ -26,9 +27,8 @@ $('.pagination').on('click', '.page-item', function() {
 // 点击跳到按钮
 $('.pagination').on('click', '#jump_page', function() {
     page = $('#page_id').val(); // 跳到指定数据的值
-    console.log(page);
 
-    if ($('#page_id').val() > $('.page-item').last().text() || $('#page_id').val() <= 0) {
+    if (parseInt(page) > parseInt($('.page-item').last().text()) || parseInt(page) > parseInt($('.page-item').last().text())) {
         $('.card')
             .css({
                 'visibility': 'revert',
@@ -45,7 +45,7 @@ $('.pagination').on('click', '#jump_page', function() {
     }
 
     if ($(phone_dim).val() == '') {
-        saler_page(1, page);
+        ea_page(1, page);
     } else {
         dim_page(1, page)
     }
@@ -63,7 +63,7 @@ function ea_page(number, index) {
             }
             $('.pagination').html(li);
         } else {
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i < 5; i++) {
                 li += `<li class="page-link page-item">${i}</li>`
             }
             $('.pagination').html(li);
@@ -116,7 +116,7 @@ function dim_page(number, index) {
                 }
                 $('.pagination').html(li);
             } else {
-                for (let i = 1; i <= 5; i++) {
+                for (let i = 1; i < 5; i++) {
                     li += `<li class="page-link page-item">${i}</li>`
                 }
                 $('.pagination').html(li);
@@ -174,3 +174,4 @@ $(tbody).delegate('#del', 'click', function(e) {
     });
     return false
 });
+// }

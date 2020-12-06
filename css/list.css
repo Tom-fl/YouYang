@@ -136,6 +136,10 @@ nav>div {
     display: none;
 }
 
+.old_weixin {
+    display: none;
+}
+
 @media screen and (max-width:540px) {
     #tab {
         width: 100%;
