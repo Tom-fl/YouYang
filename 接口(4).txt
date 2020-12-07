@@ -149,7 +149,7 @@ full_name是调用upload_img_file的返回值
 方法：GET
 参数：ea_id、page_size、current_page
 
-2、获取所有推广员的相关信息，用于管理员
+2、获取所有推广员的相关信息，用于管理员   
 接口：get_all_clients_ea/
 方法：POST
 参数：page_size、current_page

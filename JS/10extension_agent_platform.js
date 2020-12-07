@@ -464,4 +464,5 @@ if (login_name == '推广员页面') {
         })
     };
 
+    $('.qq_channel').css('display', 'none')
 };

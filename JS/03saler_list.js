@@ -180,3 +180,10 @@ $(tbody).delegate('#del', 'click', function(e) {
     });
     return false
 });
+
+
+
+// 点击查看所有按钮
+$("#to_see_all").click(function(e) {
+    // e.preventDefault();
+})

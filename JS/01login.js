@@ -43,9 +43,7 @@ function phoneAndpwd_verify() {
             } else if (index == 2) {
                 user_name = 'ea'
             }
-            console.log(phone_value, pwd_value, user_name);
             $.post('http://39.106.26.6:8888/login/', { p_phone: `${phone_value}`, p_role: `${user_name}`, p_pwd: `${pwd_value}` }, function(data) {
-                console.log(data);
                 if (user_name == 'admin' && data.status == 'Ok') {
                     window.localStorage.setItem('login_user', $('#role').val());
                     window.localStorage.setItem('login_id', data.user.p_id)
@@ -58,6 +56,8 @@ function phoneAndpwd_verify() {
                     window.localStorage.setItem('login_user', $('#role').val());
                     window.localStorage.setItem('login_id', data.user.p_id)
                     window.location.href = '10extension_agent_platform.html'
+                } else {
+                    $('#login_err').css('visibility', 'revert')
                 }
             });
         };

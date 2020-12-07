@@ -19,6 +19,14 @@
             width: 80%;
             margin: 0 auto;
         }
+        
+        #login_err {
+            position: absolute;
+            width: 84%;
+            top: 10%;
+            left: 9%;
+            visibility: hidden;
+        }
     </style>
 </head>
 
@@ -39,6 +47,9 @@
                 </article>
             </div>
             <div class="col login_input_box">
+                <div class="alert alert-danger" id="login_err">
+                    <strong>错误!</strong> 填写格式错误~~~
+                </div>
                 <article class="login_input">
                     <form action="./02admin.html" class="login_form">
                         <div class="form-group input-group">

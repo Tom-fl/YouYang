@@ -355,7 +355,6 @@ if (login_name == '销售员页面') {
     });
 
 
-
     // 处理分页的函数(管理员)
     function saler_page(number, index) {
         // 获取所有推广员的相关信息(管理员)
