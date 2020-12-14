@@ -391,7 +391,7 @@ if (login_name == '销售员页面') {
                     <td>${item.extensionagent_name}</td>
                     <td>${item.whether_add}</td>
                     <td>
-                        <button type="button" class="btn btn-info add_client"data-toggle="modal" data-target="#myModal" id=''>添加到我的客户</button>
+                        <button type="button" class="btn btn-info add_client"data-toggle="modal" data-target="#myModal" id='add_client'>添加到我的客户</button>
                     </td>
                 </tr>
                 `;
@@ -410,6 +410,7 @@ if (login_name == '销售员页面') {
             $('.add_client').click(function() {
                 is_add_client($(this).val());
             });
+            $('#add_client').css('display', 'none');
         });
     };
 
@@ -504,6 +505,9 @@ if (login_name == '销售员页面') {
         }
 
         $.post('http://39.106.26.6:8888/get_stus_bywhether_add/', { whether_add: `${whether}`, page_size: `${number}`, current_page: `${index}` }, function(data) {
+            // 显示多少条数据
+            $('.hint-body').text(data.counts + '条数据');
+            console.log(data);
             let li = ''
                 // 判断下面的小按钮
             if (data.sum_pages < 5) {
@@ -527,8 +531,7 @@ if (login_name == '销售员页面') {
                     item.whether_add = '未添加'
                 }
 
-                // 显示多少条数据
-                $('.hint-body').text(data.counts + '条数据');
+
 
                 tr += `
                   <tr>

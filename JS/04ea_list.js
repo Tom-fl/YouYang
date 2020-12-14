@@ -131,18 +131,16 @@ function dim_page(number, index) {
             <td class='amend'>${item.add_date}</td>
             <td class='amend'>${item.p_name}</td>
             <td class='amend'>${item.p_phone}</td>
-            <td class='amend'>${item.weixin}</td>
-            <td>
-                 <img src='${item.weixin_img_url}' alt='' class='ajax_03saler_img amend'>
-            </td>
+            <td class='amend'>${item.p_weixin}</td>
             <td>
                 <span class='span amend'>${item.p_pwd}</span>
-                <a href="08update_saler.html">
-                    <button type="button" class="btn btn-info amend" value='${item.p_id}' id='update'>修改</button>
-                </a>
-                <button type="button" class="btn btn-info amend" value='${item.p_id}' id='del'>删除</button>
+                </td>
+                <td>
+                <button type="button" class="btn btn-info amend" value='${item.p_id}' id='update'>修改</button>
+                 <button type="button" class="btn btn-info amend" value='${item.p_id}' id='del'>删除</button>
                 <button type="button" class="btn btn-info amend" value='${item.p_id}' id='examine'>查看</button>
-            </td>
+                </td>
+             
         </tr>`
             });
             $(tbody).html(list_gather)

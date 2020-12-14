@@ -175,6 +175,7 @@ $(tbody).delegate('#update', 'click', function(e) {
 
 // 点击删除销售员
 $(tbody).delegate('#del', 'click', function(e) {
+    // $(this).parents('tr').remove() // 删除一整行
     $.post('http://39.106.26.6:8888/delete_saler_byid/', { saler_id: `${$(this).val()}` }, function(data) {
         location.reload();
     });

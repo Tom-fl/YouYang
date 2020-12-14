@@ -23,14 +23,13 @@ $('#update').click(function() {
         $('.card')
             .css('visibility', 'revert')
         $('.card-body')
-            .text('格式错误')
+            .text('密码格式错误!!!')
     } else {
         if (index == 0) {
             user_name = 'saler'
         } else if (index == 1) {
             user_name = 'ea'
         }
-
         $.post('http://39.106.26.6:8888/update_pwd/', { p_phone: `${phone}`, p_role: `${user_name}`, p_new_pwd: `${new_pwd}`, p_old_pwd: `${old_pwd}` }, function(data) {
             if (data.status == 'Ok') {
                 $('.card')
@@ -40,7 +39,7 @@ $('#update').click(function() {
                     .addClass('bg-success')
                     .text('修改密码成功!')
                 setTimeout(() => {
-                    window.location.reload();
+                    window.location.href = '01logoin.html'
                 }, 1000)
             } else {
                 $('.card')
