@@ -20,7 +20,7 @@ let whether = null;
 if (login_name == '推广员页面') {
     console.log('推广员');
 
-    // 点击1234按钮切换分页(管理员)
+    // 点击1234按钮切换分页(推广员)
     $('.pagination').on('click', '.page-item', function() {
         page = $(this).text();
         if ($(if_add_none).val() == '') {
@@ -31,7 +31,7 @@ if (login_name == '推广员页面') {
     });
 
 
-    // 点击跳到按钮(管理员)
+    // 点击跳到按钮(推广员)
     $('.pagination').on('click', '#jump_page', function() {
         page = $('#page_id').val(); // 点击跳到获取指定的值
         let page_item = $('.page-item').last().text();
@@ -257,7 +257,6 @@ if (login_name == '推广员页面') {
         } else {
             is_add_fn($('#if_add_none').val(), 1, page)
         }
-
     });
 
 
@@ -426,6 +425,20 @@ if (login_name == '推广员页面') {
                 $('.pagination').html(li);
                 $('.pagination').append(`<li class="page-link">...</li><li class="page-link page-item">${data.sum_pages}</li><li class="page-link" id='jump_page'>跳到</li><li class="page-link"><input type='text' id='page_id'></li>`)
             }
+
+            // 显示多少条数据
+            $('.hint-body').text(data.counts + '条数据');
+            if (data.counts == 0) {
+                $('.card')
+                    .text('没得数据')
+                    .css({
+                        'visibility': 'revert',
+                        'color': 'red'
+                    })
+            } else {
+                $('.card').css('visibility', 'hidden')
+            }
+
 
             let tr = '';
             $(data.list).each(function(index, item) {
